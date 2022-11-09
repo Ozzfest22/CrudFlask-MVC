@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Listado de Juegos</h3>
+    </div>
+    <div class="panel-body">
+        <a class="btn btn-success mt-2" href="{{ url_for('agregar_juego') }}">Nuevo Juego</a>
+
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <td hidden>Id</td>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                    <td>Precio</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for juego in juegos %}
+                <tr>
+                    <td hidden>{{ juego[0] }}</td>
+                    <td>{{ juego[1] }}</td>
+                    <td>{{ juego[2] }}</td>
+                    <td>{{ juego[3] }}</td>
+                    <td>
+                        
+                        <form>
+                            <a class="btn btn-info" href="{{ url_for('editar_juego', id = juego[0]) }}">Editar</a>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
