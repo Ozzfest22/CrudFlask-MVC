@@ -27,10 +27,12 @@
                     <td>{{ juego[1] }}</td>
                     <td>{{ juego[2] }}</td>
                     <td>{{ juego[3] }}</td>
-                    <td>
-                        
-                        <form>
+                    <td>                       
+                        <form action="{{ url_for('eliminar_juego') }}" method="POST">
                             <a class="btn btn-info" href="{{ url_for('editar_juego', id = juego[0]) }}">Editar</a>
+
+                            <input type="hidden" value="{{ juego[0] }}" name="id" />
+
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>

@@ -4,8 +4,7 @@ from CrudFlask.ConexionDB.conexion import obtener_conexion
 def insertar_juego(nombre, descripcion, precio):
     conexion = obtener_conexion()
     with conexion.cursor() as cursor:
-        cursor.execute("INSERT INTO Juegos(Nombre, Descripcion, Precio) VALUES (?,?,?)", nombre, descripcion, precio)
-        
+        cursor.execute("exec sp_GuardarJuego ?, ?, ?", nombre, descripcion, precio)
     conexion.commit()
     conexion.close()
 
@@ -14,7 +13,7 @@ def obtener_juegos():
     conexion = obtener_conexion()
     juegos = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT IdJuego, Nombre, Descripcion, Precio FROM Juegos")
+        cursor.execute("exec sp_ObtenerJuegos")
         juegos = cursor.fetchall()
 
     conexion.close()
@@ -25,7 +24,7 @@ def obtener_juego_por_id(id):
     conexion = obtener_conexion()
     juego = None
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT IdJuego, Nombre, Descripcion, Precio FROM Juegos WHERE IdJuego = ?", id)
+        cursor.execute("exec sp_ObtenerJuegoEdit ?", id)
         juego = cursor.fetchone()
 
     conexion.close()
@@ -34,7 +33,16 @@ def obtener_juego_por_id(id):
 def actualizar_juego(nombre, precio, descripcion, id):
     conexion = obtener_conexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE Juegos SET Nombre = ?, Descripcion = ?, Precio = ? WHERE IdJuego = ?", nombre, descripcion, precio, id)
+        cursor.execute("exec sp_ActualizarJuego ?, ?, ?, ?", nombre, descripcion, precio, id)
+
+    conexion.commit()
+    conexion.close()
+
+
+def eliminar_juego(id):
+    conexion = obtener_conexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("exec sp_EliminarJuego ?", id)
 
     conexion.commit()
     conexion.close()

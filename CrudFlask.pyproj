@@ -33,6 +33,21 @@
     <Compile Include="CrudFlask\Controlador\JuegoController.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CrudFlask\Controlador\LoginController.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CrudFlask\Routes\rutas_basicas.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CrudFlask\Routes\rutas_juegos.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CrudFlask\Routes\rutas_login.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CrudFlask\Security\security_decorator.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="CrudFlask\__init__.py" />
     <Compile Include="CrudFlask\views.py" />
@@ -41,6 +56,8 @@
     <Folder Include="CrudFlask\" />
     <Folder Include="CrudFlask\ConexionDB\" />
     <Folder Include="CrudFlask\Controlador\" />
+    <Folder Include="CrudFlask\Security\" />
+    <Folder Include="CrudFlask\Routes\" />
     <Folder Include="CrudFlask\static\" />
     <Folder Include="CrudFlask\static\content\" />
     <Folder Include="CrudFlask\static\fonts\" />
@@ -51,6 +68,7 @@
     <Content Include="CrudFlask\templates\agregar_juego.html" />
     <Content Include="CrudFlask\templates\editar_juego.html" />
     <Content Include="CrudFlask\templates\juegos.html" />
+    <Content Include="CrudFlask\templates\login.html" />
     <Content Include="requirements.txt" />
     <Content Include="CrudFlask\static\content\bootstrap.css" />
     <Content Include="CrudFlask\static\content\bootstrap.min.css" />
